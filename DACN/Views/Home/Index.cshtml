@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DACN.Models.Movie>
+@{
+    ViewBag.Title = "Trang chủ";
+}
+<link href="~/Shared/css/home.css" rel="stylesheet" />
+<style>
+    .cart-body {
+        width: 20%;
+        float: left;
+        margin: 0 30px;
+    }
+
+    .cart-content{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<div class="movie-section">
+    <div class="section-title">
+        <h2>Phim chiếu rạp</h2>
+        @Html.ActionLink("Xem thêm...", "Classify", new { type = "theater" })
+    </div>
+    <div class="container" style="width:100%;">
+        @foreach (var item in Model)
+        {
+            if (item.isTheater)
+            {
+                <div class="card card-fixed cart-body">
+                    <a href="~/Home/Watcher/@item.Id">
+                        <img style="width: 100%; height: auto;" src="@item.Image" class="card-img-top" alt="@item.Name">
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title" style="height:45px; text-align:center">
+                            <strong>@item.Name</strong>
+                        </h5>
+                        <p class="card-text cart-content">
+                            @item.Content
+                        </p>
+                        <a style="width:100%" href="@Url.Action("Watcher","Home", new { id = item.Id })" class="btn btn-primary">Xem phim</a>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+</div>
+<div class="movie-section">
+    <div class="section-title">
+        <h2>Phim hoạt hình</h2>
+        @Html.ActionLink("Xem thêm...", "Classify", new { type = "anime" })
+    </div>
+    <div class="container" style="width:100%;">
+        @foreach (var item in Model)
+        {
+            if (item.isAnime)
+            {
+                <div class="card card-fixed cart-body">
+                    <a href="~/Home/Watcher/@item.Id">
+                        <img style="width: 100%; height: auto;" src="@item.Image" class="card-img-top" alt="@item.Name">
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title" style="height:45px; text-align:center">
+                            <strong>@item.Name</strong>
+                        </h5>
+                        <p class="card-text cart-content">
+                            @item.Content
+                        </p>
+                        <a style="width:100%" href="@Url.Action("Watcher","Home", new { id = item.Id })" class="btn btn-primary">Xem phim</a>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+</div>

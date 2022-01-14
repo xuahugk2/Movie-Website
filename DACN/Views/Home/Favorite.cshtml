@@ -1,0 +1,81 @@
+﻿@using DACN.Models
+@model IEnumerable<Movie>
+@{
+    ViewBag.Title = "Favorite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Shared/css/home.css" rel="stylesheet" />
+<style>
+    .cart-body {
+        width: 20%;
+        float: left;
+        margin: 0 30px;
+    }
+
+    .cart-content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .login {
+        background-color: greenyellow;
+        padding: 11px 21px;
+        border-radius: 11px;
+        margin-left: 629px;
+        color: black;
+        cursor: pointer;
+    }
+
+        .login:hover {
+            color: black;
+        }
+</style>
+@if (Session["userEmail"] == null)
+{
+    <h2>Bạn chưa đăng nhập</h2>
+    <h2>Hãy đăng nhập để xem danh sách yêu thích của bạn</h2>
+    <a class="login" href="@Url.Action("Login", "Account")">Đăng nhập</a>
+}
+else
+{
+    if (Model.Count() == 0)
+    {
+        <h2>Bạn chưa thêm bất kỳ bộ phim nào</h2>
+        <h2>Hãy quay lại trang chủ để thêm bộ phim yêu thích của bạn</h2>
+    }
+    else
+    {
+        <h2>Danh sách yêu thích của bạn</h2>
+        <div class="container" style="width:100%; margin-top: 15px;">
+            @foreach (var item in Model)
+            {
+                if (item.isTheater)
+                {
+                    <div class="card card-fixed cart-body">
+                        <a href="~/Home/Watcher/@item.Id">
+                            <img style="width: 100%; height: auto;" src="@item.Image" class="card-img-top" alt="@item.Name">
+                        </a>
+
+                        <div class="card-body">
+                            <h5 class="card-title" style="height:45px; text-align:center">
+                                <strong>@item.Name</strong>
+                            </h5>
+                            <p class="card-text cart-content">
+                                @item.Content
+                            </p>
+                            <a style="width:100%" href="@Url.Action("Watcher","Home", new { id = item.Id })" class="btn btn-primary">Xem phim</a>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    }
+}
+

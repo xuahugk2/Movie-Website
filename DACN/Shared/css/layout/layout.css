@@ -1,0 +1,91 @@
+﻿.logo a {
+    color: white;
+    font-size: 35px;
+    margin: 0 40px;
+}
+
+.links {
+}
+
+    .links ul {
+        display: flex;
+        margin: 8px 18px;
+    }
+
+        .links ul li {
+            border: none;
+            border-radius: 5px;
+            padding: 10px 30px;
+            transition: all 0.3s ease;
+        }
+
+            .links ul li:hover {
+                background-color: darkgrey;
+                cursor: pointer;
+            }
+
+                .links ul li:hover a {
+                    color: black;
+                }
+
+            .links ul li a {
+                color: white;
+            }
+
+.btn-login {
+    margin-right: 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
+
+    .btn-login:hover {
+        color: white;
+        background-color: darkgrey;
+    }
+
+.search-box {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+    .search-box input {
+        border: 0;
+        outline: 0;
+        height: 40px;
+        width: 280px;
+        margin-left: 15px;
+    }
+
+
+    .search-box button {
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+
+        .search-box button i {
+            font-size: 20px;
+        }
+
+.body {
+    height: 10px;
+    width: 90%;
+    margin: 0 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.users a{
+    margin-right: 10px;
+}
+
+.users .users_name {
+    border-right: 2px solid white;
+}
+
+.users .logoff_btn:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DACN.Models.Movie>
+
+@{
+    ViewBag.Title = "Classify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Shared/css/home.css" rel="stylesheet" />
+<style>
+    .classify_tiltle {
+        text-align: center;
+        margin: 30px 0;
+    }
+    .cart-body {
+        width: 20%;
+        float: left;
+        margin: 0 30px;
+    }
+
+    .cart-content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<h2 class="classify_tiltle">@ViewBag.Message</h2>
+
+<div class="container" style="width:100%;">
+    @foreach (var item in Model)
+    {
+        <div class="card card-fixed cart-body">
+            <a href="~/Home/Watcher/@item.Id">
+                <img style="width: 100%; height: auto;" src="@item.Image" class="card-img-top" alt="@item.Name">
+            </a>
+
+            <div class="card-body">
+                <h5 class="card-title" style="height:45px; text-align:center">
+                    <strong>@item.Name</strong>
+                </h5>
+                <p class="card-text cart-content">
+                    @item.Content
+                </p>
+                <a style="width:100%" href="@Url.Action("Watcher","Home", new { id = item.Id })" class="btn btn-primary">Xem phim</a>
+            </div>
+        </div>
+    }
+</div>

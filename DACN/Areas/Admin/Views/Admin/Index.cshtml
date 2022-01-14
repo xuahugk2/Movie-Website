@@ -1,0 +1,35 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using DACN.Models;
+@model PagedList.IPagedList<User>
+@{
+    ViewBag.Title = "Trang Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Areas/Admin/Shared/css/index.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Shared/css/manage.css" rel="stylesheet" />
+<h2 style="text-align: center">Quản lý người dùng</h2>
+@*<table>
+    <tr>
+        <th>Email</th>
+        <th>Họ tên</th>
+        <th>Khởi tạo</th>
+        <th></th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td><h3>@user.Email</h3></td>
+            <td><h3>@user.FullName</h3></td>
+            <td><h3>@user.CreateAt</h3></td>
+            <td>
+                <a href="@Url.Action("Upgrade", new { email = user.Email })" title="Sửa" class="update"><i class="bi bi-pencil-square"></i></a>
+                <a href="@Url.Action("DeleteUser", new { email = user.Email })" title="Xóa" class="trash"><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="menu_page">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>*@

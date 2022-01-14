@@ -1,0 +1,109 @@
+﻿@using DACN.Models
+@model Movie
+@{
+    ViewBag.Title = "Watcher";
+    List<Movie> data = ModelMethod.getSameMovie(Model.isAnime, Model.isTheater, Model.Id);
+    var check = ModelMethod.checkFollow((string)Session["userEmail"], Model.Id);
+}
+
+<link href="~/Shared/css/detail.css" rel="stylesheet" />
+<link href="~/Shared/css/home.css" rel="stylesheet" />
+<style>
+    .one-line-text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .cart-body {
+        width: 25%;
+        float: left;
+        margin: 0 30px;
+    }
+
+    .cart-content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .favorite-btn, .favorited-btn {
+        margin-left: 700px;
+        padding: 6px 25px;
+        width: auto;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+        .favorite-btn, .favorite-btn:hover {
+            color: white;
+            background-color: red;
+        }
+
+        .favorited-btn, .favorited-btn:hover {
+            color: black;
+            background-color: darkgray;
+        }
+</style>
+<div style="margin: 20px 0;">
+    <div class="row">
+        <video width="560" height="550" controls>
+            @*<source src="@Url.Action("ToFileUrl", "Home", new { path = Model.Trailer, isImage = false })" type="video/mp4">*@
+            <source src="@Model.Trailer" type="video/mp4">
+        </video>
+    </div>
+    <div class="row" style="margin: 40px 0 100px 0;">
+        <div class="col-sm-4 col-md-12">
+            <div class="row" style="margin-bottom: 100px;">
+                <h2>@Model.Name</h2>
+                <p><strong>Nội dung: </strong>@Model.Content</p>
+                @if (check)
+                {
+                    <a class="favorited-btn" href="@Url.Action("RemoveFromFavorite", new { movId = Model.Id, strUrl = Request.Url.ToString() })">Đã yêu thích</a>
+                }
+                else
+                {
+                    <a class="favorite-btn" href="@Url.Action("AddToFavorite", new { movId = Model.Id, strUrl = Request.Url.ToString() })">Yêu thích</a>
+                }
+            </div>
+            <h2>Đề xuất cho bạn</h2>
+            <div class="container" style="width:100%;">
+                @foreach (var item in data)
+                {
+                    <div class="card card-fixed cart-body">
+                        <a href="~/Home/Watcher/@item.Id">
+                            <img style="width: 100%; height: auto;" src="@item.Image" class="card-img-top" alt="@item.Name">
+                        </a>
+
+                        <div class="card-body">
+                            <h5 class="card-title" style="height:45px; text-align:center">
+                                <strong>@item.Name</strong>
+                            </h5>
+                            <p class="card-text cart-content">
+                                @item.Content
+                            </p>
+                            <a style="width:100%" href="@Url.Action("Watcher","Home", new { id = item.Id })" class="btn btn-primary">Xem phim</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        @*<div class="col-sm-4 col-md-3" style="margin-left: 50px;">
+            <h2>Hot nhất trong ngày</h2>
+            <a href="" class="text-decoration-none text-black">
+                <div class="playlists">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4">
+                            <img class="playlists__img" src="~/Shared/img/thumbnail.jpg" />
+                        </div>
+                        <div class="col-sm-4 col-md-6">
+                            <h4 class="one-line-text">Tên phim</h4>
+                            <p class="one-line-text">Thể loại</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>*@
+    </div>
+</div>

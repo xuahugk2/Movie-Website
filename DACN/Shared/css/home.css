@@ -1,0 +1,75 @@
+﻿
+
+.movie-section {
+    width: 100%;
+    margin: 35px 0;
+    display: flow-root;
+}
+
+    .movie-section .section-title {
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+        .movie-section .section-title a {
+            text-decoration: none;
+            position: relative;
+            left: 600px;
+            color: black;
+            transition: .3s;
+        }
+
+            .movie-section .section-title a:hover {
+                color: #2691d9;
+            }
+
+    .movie-section .section-content {
+        width: 100%;
+        justify-content: center;
+        display: block;
+    }
+
+        .movie-section .section-content .movie-card {
+            width: 250px;
+            height: 400px;
+            margin: 25px 11px;
+            float: left;
+            text-decoration: none;
+            color: black;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+.movie-card .movie-img {
+    width: 100%;
+    height: 300px;  
+}
+
+.movie-card:hover .movie-img {
+    width: 120%;
+    height: 350px;
+    transition: .5s;
+}
+
+.movie-card .movie-info {
+    width: 100%;
+    height: 100px;
+}
+
+.movie-info h4, .movie-info p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.movie-info h4 {
+    margin: 15px 0;
+}
+
+.movie-info p {
+    line-height: 20px;
+    height: 40px;
+    white-space: pre !important;
+}

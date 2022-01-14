@@ -1,0 +1,11 @@
+﻿@if (Session["userEmail"] != null)
+{
+    <a class="nav-link text-decoration-none text-light" href="#">
+        @Session["userName"]
+    </a>
+    <a class="nav-link text-decoration-none text-light" href="@Url.Action("LogOff", "Account")"></a>
+}
+else
+{
+    @Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn-login" })
+}

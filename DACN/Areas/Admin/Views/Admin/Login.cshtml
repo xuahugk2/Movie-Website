@@ -1,0 +1,31 @@
+﻿@using DACN.ViewModels
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = null;
+}
+<link href="~/Shared/css/login.css" rel="stylesheet" />
+<div class="center">
+    <h1>Đăng nhập trang quản trị</h1>
+    @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="txt_field">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "input" })
+            <span></span>
+            <label>Tên đăng nhập</label>
+        </div>
+        <div class="txt_field">
+            @Html.PasswordFor(m => m.Password, new { @class = "input" })
+            <span></span>
+            <label>Mật khẩu</label>
+        </div>
+        if (ViewBag.Message != null)
+        {
+            <h4>@ViewBag.Message</h4>
+        }
+        <input type="submit" value="Đăng nhập" />
+    }
+</div>

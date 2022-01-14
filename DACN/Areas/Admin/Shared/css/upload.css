@@ -1,0 +1,96 @@
+﻿h2 {
+    text-align: center;
+    font-size: 17px;
+}
+
+.title {
+    text-align: center;
+    font-size: 17px;
+    color: red;
+}
+
+.full-side {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+    .full-side .half-side {
+        width: 50%;
+    }
+
+.field {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+    .field > input[type=submit] {
+        text-align: center;
+    }
+
+    .field h3 {
+        margin: 20px 35px 10px 35px;
+    }
+
+        .field h3.success {
+            margin-right: 500px;
+        }
+
+    .field .input {
+        width: 60%;
+        height: 30px;
+        margin: 0 35px;
+        font-size: 14px;
+        font-weight: 500;
+        outline: none;
+        border-radius: 10px;
+    }
+
+        .field .input::placeholder {
+            font-size: 14px;
+        }
+
+    .field hr {
+        margin: 10px auto 30px 35px;
+    }
+
+    .field .check-box {
+        margin-left: 40px;
+    }
+
+    .field .check-box-label {
+        margin-left: 4px;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .field .dropdown {
+        margin: 0 35px;
+        font-size: 14px;
+        width: 35%;
+        text-align: center;
+    }
+
+    .field .input-area {
+        margin: 0 35px;
+        width: 60%;
+        height: 130px;
+    }
+
+    .field .btn-submit {
+        font-size: 15px;
+        padding: 8px 35px;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background-color: #f71b56;
+        margin: 15px 70px;
+        border-radius: 9px;
+        transition: .1s;
+    }
+
+        .field .btn-submit:hover {
+            border: 2px solid #f71b56;
+        }

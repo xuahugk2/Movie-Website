@@ -1,0 +1,35 @@
+﻿@model DACN.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+<link href="~/Shared/css/login.css" rel="stylesheet" />
+
+<div class="center">
+    <h1>Đăng ký</h1>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="txt_field">
+            @Html.TextBoxFor(m => m.Email, new { @class = "input", @placeholder = "Email" })
+        </div>
+        <div class="txt_field">
+            @Html.TextBoxFor(m => m.FullName, new { @class = "input", @placeholder = "Họ và tên" })
+        </div>
+        <div class="txt_field">
+            @Html.PasswordFor(m => m.Password, new { @class = "input", @placeholder = "Mật khẩu" })
+        </div>
+        <div class="txt_field">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input", @placeholder = "Nhập lại mật khẩu" })
+        </div>
+        <input type="submit" value="Đăng ký" />
+        <div class="signup_link">
+            Nếu đã là thành viên ? @Html.ActionLink("Đăng nhập", "Login")
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

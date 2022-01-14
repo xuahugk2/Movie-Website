@@ -1,0 +1,52 @@
+﻿.bd-content {
+    margin-top: 30px;
+}
+
+.stream-sec {
+    width: 100%;
+    height: 100px;
+    background-color: aqua;
+    display: flex;
+    color: black;
+}
+
+    .stream-sec:hover{
+        color: black;
+    }
+
+    .stream-sec img {
+        height: 100%;
+    }
+
+    .stream-sec .stream-bd {
+        width: auto;
+        height: 100%;
+    }
+
+.stream-bd .stream-title {
+    display: flex;
+    height: 35%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.stream-title h5{
+    margin-left: 40px;
+}
+
+.stream-title h6 {
+    margin-left: 160px;
+}
+
+.stream-bd .stream-cont {
+    width: 635px;
+    margin: 0 15px;
+}
+
+.stream-cont p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 40px;
+}

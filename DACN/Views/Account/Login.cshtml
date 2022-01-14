@@ -1,0 +1,40 @@
+﻿@using DACN.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = null;
+}
+<link href="~/Shared/css/login.css" rel="stylesheet" />
+<div class="center">
+    <h1>Đăng nhập</h1>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="txt_field">
+            @Html.TextBoxFor(m => m.Email, new { @class = "input" })
+            <span></span>
+            <label>Tên đăng nhập</label>
+        </div>
+        <div class="txt_field">
+            @Html.PasswordFor(m => m.Password, new { @class = "input" })
+            <span></span>
+            <label>Mật khẩu</label>
+        </div>
+        <div style="text-align: center">
+            <p style="color: red">@ViewBag.Message</p>
+        </div>
+        <input type="submit" value="Đăng nhập" />
+    }
+    <div class="signup_link">
+        Không phải thành viên ? @Html.ActionLink("Đăng ký", "Register")
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Areas/Admin/Shared/css/layout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left__side">
+            <div class="side__main">
+                <h3>Quản lý tác vụ Admin</h3>
+            </div>
+            <a href="~/Admin" class="side__action">
+                <i class="bi bi-house-door-fill"></i>
+                <h3>Trang chủ</h3>
+                <i class="arrow bi bi-chevron-compact-right"></i>
+            </a>
+            <a href="~/Admin/Admin/UploadMovie" class="side__action">
+                <i class="bi bi-plus-circle-fill"></i>
+                <h3>Thêm phim</h3>
+                <i class="arrow bi bi-chevron-compact-right"></i>
+            </a>
+            <a href="~/Admin/Admin/Manage" class="side__action">
+                <i class="bi bi-person-circle"></i>
+                <h3>Quản lý phim</h3>
+                <i class="arrow bi bi-chevron-compact-right"></i>
+            </a>
+        </div>
+        <div class="right__side">
+            <div class="wrapper">
+                <div class="header">
+                    <form class="search_form" method="post" action="/Admin/Admin/Search">
+                        <input type="text" id="search" name="search" placeholder="Tìm kiếm ..." required />
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                    @if (Session["adminId"] != null)
+                    {
+                        <a href="@Url.Action("LogOut", "Admin")">Đăng xuất</a>
+                    }
+                </div>
+            </div>
+            <div class="render_body">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>

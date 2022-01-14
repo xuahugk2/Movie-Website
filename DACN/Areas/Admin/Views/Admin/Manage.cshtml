@@ -1,0 +1,43 @@
+﻿@using PagedList.Mvc;
+@using DACN.Models;
+@model PagedList.IPagedList<Movie>
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Areas/Admin/Shared/css/manage.css" rel="stylesheet" />
+<h2 style="text-align: center">Quản lý danh sách phim</h2>
+
+<table>
+    <tr>
+        <th>Tên phim</th>
+        <th>Thể loại</th>
+        <th>Quốc gia</th>
+        <th></th>
+    </tr>
+    @foreach (var mov in Model)
+    {
+        <tr>
+            <td><h3>@mov.Name</h3></td>
+            <td>
+                @if (mov.isAnime)
+                {
+                    <h3>Anime</h3>
+                }
+                @if (mov.isTheater)
+                {
+                    <h3>Theater</h3>
+                }
+            </td>
+            <td><h3>@mov.Country.CountryName</h3></td>
+            <td>
+                <a href="@Url.Action("Update", new { id = mov.Id })" title="Sửa" class="update"><i class="bi bi-pencil-square"></i></a>
+                <a href="@Url.Action("Delete", new { id = mov.Id, strURL = Request.Url.ToString() })" title="Xóa" class="trash"><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="menu_page">
+    @Html.PagedListPager(Model, page => Url.Action("Manage", new { page = page }))
+</div>

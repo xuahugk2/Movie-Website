@@ -1,0 +1,93 @@
+﻿@using DACN.Models
+@model DACN.ViewModels.UploadViewModel
+@{
+    ViewBag.Title = "Chỉnh sửa";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var country = ModelMethod.getCountries();
+    var year = ModelMethod.getYears();
+    var status = ModelMethod.getStatus();
+    var season = ModelMethod.getSeason();
+}
+<link href="~/Areas/Admin/Shared/css/update.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Shared/css/upload.css" rel="stylesheet" />
+<h2>Chỉnh sửa nội dung. Id: {@Model.Id}</h2>
+
+@using (Html.BeginForm("Update", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="full-side">
+            <div class="half-side">
+                <div class="field">
+                    <h3>Tên phim</h3>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "input", @placeholder = "Tên phim ..." })
+                </div>
+                <div class="field">
+                    <h3>Thể loại</h3>
+                    @Html.CheckBoxFor(m => m.Anime, new { @class = "check-box" })
+                    @Html.LabelFor(m => m.Anime, new { @class = "check-box-label" })
+                    @Html.CheckBoxFor(m => m.Theater, new { @class = "check-box" })
+                    @Html.LabelFor(m => m.Theater, new { @class = "check-box-label" })
+                </div>
+
+                <div class="field">
+                    <h3>Quốc gia</h3>
+                    @Html.DropDownListFor(m => m.CountryName, country, "---Chọn quốc gia---", new { @class = "dropdown" })
+                </div>
+
+                <div class="field">
+                    <h3>Nội dung</h3>
+                    @Html.TextAreaFor(m => m.Content, new { @class = "input-area", @placeholder = "Nội dung phim ..." })
+                </div>
+            </div>
+            <div class="half-side">
+                <div class="field">
+                    <h3>Năm phát hành</h3>
+                    @Html.DropDownListFor(m => m.YearRelease, year, "---Chọn năm phát hành---", new { @class = "dropdown" })
+                </div>
+
+                <div class="field">
+                    <h3>Mùa</h3>
+                    @Html.DropDownListFor(m => m.Season, season, "---Mùa---", new { @class = "dropdown" })
+                </div>
+
+                <div class="field">
+                    <h3>Tình trạng</h3>
+                    @Html.DropDownListFor(m => m.Status, status, "---Tình trạng---", new { @class = "dropdown" })
+                </div>
+
+                <div class="field">
+                    <input type="file" id="image" name="image" />
+                </div>
+
+                <div class="field">
+                    <input type="file" id="video" name="video" />
+                </div>
+
+                <div class="field">
+                    <input type="file" id="thumbnail" name="thumbnail" />
+                </div>
+            </div>
+        </div>
+
+        <div class="full-side">
+            <div class="field">
+                <input type="submit" value="Chỉnh sửa" class="btn-submit" />
+            </div>
+        </div>
+    </div>
+}
+@if (ViewBag.Message != null)
+{
+    <script>
+        Toastify({
+
+            text: "Hello World!!",
+
+            duration: 5000
+
+        }).showToast();
+    </script>
+}

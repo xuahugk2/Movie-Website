@@ -1,0 +1,55 @@
+﻿
+
+table th, table td {
+    width: 300px;
+}
+
+table td {
+    height: 70px;
+    margin: 10px 0;
+    background-color: cornflowerblue;
+    align-items: center;
+    text-align: center;
+}
+
+td h3 {
+    margin: 0 15px;
+    width: 270px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.trash, .update {
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 4px;
+    color: white;
+    margin: 0 5px;
+}
+
+.trash {
+    background-color: red;
+}
+
+.update {
+    background-color: forestgreen;
+}
+
+    .trash:hover, .update:hover {
+        border: 2px solid black;
+    }
+
+.menu_page {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+}
+
+    .menu_page li {
+        display: inline;
+        padding: 5px 7px;
+        border: 1px solid;
+        cursor: pointer;
+    }

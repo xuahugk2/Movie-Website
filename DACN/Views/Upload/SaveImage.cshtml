@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "SaveImage";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@using (Html.BeginForm("SaveImage", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div>
+    @Html.TextBox("uploadedImage", "", new { type = "file" })
+
+    <input type="submit" value="Upload" />
+
+    @if (ViewBag.Message != null)
+    {
+        @ViewBag.Message
+    }
+</div>
+}
+
