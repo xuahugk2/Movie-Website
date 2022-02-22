@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using System.Threading.Tasks;
 
 namespace DACN.Areas.Admin.Controllers
 {
@@ -128,7 +129,7 @@ namespace DACN.Areas.Admin.Controllers
             return View("Login");
         }
 
-        public ActionResult Delete(int id, string strURL)
+        public ActionResult DeleteAsync(int id, string strURL)
         {
             Movie mov = _db.Movies.FirstOrDefault(m => m.Id == id);
             _db.Movies.Remove(mov);
