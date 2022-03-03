@@ -35,7 +35,7 @@
                 <a class="users_name text-decoration-none text-light" href="#">
                     @Session["userName"]
                 </a>
-                <a class="logoff_btn btn-login text-decoration-none text-light" href="@Url.Action("DangXuat", "Account", new { strUrl = Request.Url.ToString() })">Đăng xuất</a>
+                <a class="logoff_btn btn-login text-decoration-none text-light" href="@Url.Action("Logout", "Account")">Đăng xuất</a>
             }
             else
             {

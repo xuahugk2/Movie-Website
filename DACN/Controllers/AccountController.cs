@@ -86,10 +86,11 @@ namespace DACN.Controllers
         }
 
 
-        public ActionResult DangXuat(string strUrl)
+        public ActionResult Logout()
         {
             Session.Clear();
-            return Redirect(strUrl);
+            //return Redirect(strUrl);
+            return RedirectToAction("Home", "Index");
         }
 
         #region Helpers
