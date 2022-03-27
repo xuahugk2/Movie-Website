@@ -44,6 +44,19 @@
             color: black;
             background-color: darkgray;
         }
+    .card {
+        width: 20%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-bottom: 20px;
+    }
+
+        .card h5 {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 </style>
 
 
@@ -83,7 +96,7 @@
                         </a>
 
                         <div class="card-body">
-                            <h5 class="card-title" style="height:45px; text-align:center">
+                            <h5 class="card-title" style="text-align:center">
                                 <strong>@item.Name</strong>
                             </h5>
                             <p class="card-text cart-content">
