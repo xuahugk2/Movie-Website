@@ -50,7 +50,10 @@
 <script>
     //khong hien thi chuot phai
     document.addEventListener('contextmenu', event => event.preventDefault());
-
+    //điều chỉnh khóa chuột phải khi video đang phát
+    $(document).ready(function () {
+        $('#videoElementID').bind('contextmenu', function () { return false; });
+    });
 </script>
 <div style="margin: 20px 0;">
     <div class="row">
